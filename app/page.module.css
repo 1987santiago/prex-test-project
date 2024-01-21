@@ -2,10 +2,6 @@
   color: #ffffff;
 }
 
-.alpha {
-  color: blueviolet;
-}
-
-.beta {
-  color: yellowgreen;
+.mainPage a {
+  margin: 8px;
 }

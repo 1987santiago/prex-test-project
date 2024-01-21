@@ -5,9 +5,15 @@ import LoginComponent from "@/app/components/login";
 import LogoutComponent from "@/app/components/logout";
 import { UserDataProps } from "@/types";
 import { USER } from "@/constants";
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 const Login = () => {
-    const [user, setUser] = useState(localStorage.getItem(USER.ACTIVE));
+    const [user, setUser] = useState(global?.localStorage?.getItem(USER.ACTIVE));
+
+    if (user) {
+        window.location.replace(window.location.origin);
+    }
 
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -20,18 +26,18 @@ const Login = () => {
             }
         });
 
-        const responseData: string = await response.json();
-        const usersList: Array<any> = JSON.parse(responseData);
+        const responseData = await response.json();
+        const usersList = JSON.parse(responseData);
         const userAuth: UserDataProps = usersList.find((user: UserDataProps) => user.name === username);
 
         if (!userAuth || userAuth.password !== password) {
-            // Acceso denegado
-            console.log('Vos no pasas');
+            console.log('401 - Vos no pasas');
             return;
         }
 
         setUser(userAuth.name);
         localStorage.setItem(USER.ACTIVE, userAuth.name);
+        window.location.replace(window.location.origin);
     };
 
     if (user) {
@@ -47,8 +53,13 @@ const Login = () => {
     }
 
     return (
-        <LoginComponent onSubmit={onSubmit} />
+        <>
+            <LoginComponent onSubmit={onSubmit} />
+            <Link href="/pages/create-account" >Create Account</Link>
+        </>
     );
 };
 
-export default Login;
+export default dynamic(() => Promise.resolve(Login), {
+    ssr: false,
+});
