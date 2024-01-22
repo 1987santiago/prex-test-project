@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import LoginComponent from "@/app/components/login";
 import LogoutComponent from "@/app/components/logout";
 import { UserDataProps } from "@/types";
-import { USER } from "@/constants";
+import { ROUTES, USER } from "@/constants";
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -37,26 +37,25 @@ const Login = () => {
 
         setUser(userAuth.name);
         localStorage.setItem(USER.ACTIVE, userAuth.name);
+        persistUserData(userAuth);
         window.location.replace(window.location.origin);
+    };
+
+    const persistUserData = async (user: UserDataProps) => {
+        await fetch('/api/user', {
+            method: 'POST',
+            body: JSON.stringify(user)
+        });
     };
 
     if (user) {
         return (
-            <>
-                <h4>Bienvenido {user}!</h4>
-                <LogoutComponent onSubmit={() => {
-                    localStorage.clear();
-                    setUser('');
-                }} />
-            </>
+            <h4>Bienvenido {user}!</h4>
         );
     }
 
     return (
-        <>
-            <LoginComponent onSubmit={onSubmit} />
-            <Link href="/pages/create-account" >Create Account</Link>
-        </>
+        <LoginComponent onSubmit={onSubmit} />
     );
 };
 

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import styles from '../pages/files/page.module.css';
 
 const UploadFile = ({ uploadFile }: { uploadFile: Function }) => {
     const [file, setFile] = useState();
@@ -16,13 +17,11 @@ const UploadFile = ({ uploadFile }: { uploadFile: Function }) => {
     };
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className={styles.form}>
             <fieldset>
                 <legend>Upload File</legend>
-                <div>
-                    <label htmlFor='file'>Select file:</label>
-                    <input type='file' onChange={onChange} name='file' id='file' />
-                </div>
+                <label htmlFor='file'>Select file:</label>
+                <input type='file' onChange={onChange} name='file' id='file' />
                 <input type="submit" value="Upload" />
             </fieldset>
         </form>

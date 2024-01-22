@@ -3,8 +3,8 @@ const USER = {
 };
 const ROUTES = {
     API: {
-        FILE: '/api/file',
         FILES: '/api/files',
+        USER: '/api/user',
         USERS: '/api/users',
     },
     PAGES: {

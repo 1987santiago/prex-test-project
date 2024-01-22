@@ -2,6 +2,44 @@
   color: #ffffff;
 }
 
-.mainPage a {
-  margin: 8px;
+.link,
+.link:visited {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.navigate {
+  border-bottom: 1px solid #444444;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 4px #000000;
+}
+
+.navigate ul {
+  margin: 0;
+  display: flex;
+}
+
+.navigate li {
+  display: inline-flex;
+}
+
+.navigate a,
+.navigate a:visited,
+.navigate input[type="submit"] {
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+}
+
+.navigate a:hover,
+.navigate input[type="submit"]:hover {
+  background-color: #444444;
+}
+
+.navigate input[type="submit"] {
+  background: transparent;
+  border: 0;
 }

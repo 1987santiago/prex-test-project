@@ -1,3 +1,6 @@
+'use client';
+
+import Navigate from './components/navigate';
 import './globals.css'
 
 export default function RootLayout({
@@ -7,7 +10,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        <Navigate />
+        {children}
+      </body>
     </html>
   );
 }

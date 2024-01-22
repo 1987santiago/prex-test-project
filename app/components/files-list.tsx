@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { FileProps } from '@/types';
+import styles from '../pages/files/page.module.css';
 
 const FilesList = (
     {
@@ -36,16 +37,19 @@ const FilesList = (
         )
     }
     return (
-        <>
-            <h2>Files List</h2>
-            <ul>
+        <section>
+            <h3>Files List</h3>
+            <ul className={styles.list}>
                 {
                     files.map((file, i) => (
                         <li key={file.name + i}>
-                            <img src={file.filepath} alt={file.name} title={file.name} />
-                            <span>{file.name}</span>
-                            <div>
-                                <button type="button" onClick={() => { deleteFile(file) }}>delete</button>
+                            <div className={styles.fileInfo}>
+                                <span className={styles.fileName}>Name: {file.name}</span>
+                                <span className={styles.fileAuthor}>Author: {file.author}</span>
+                                <span className={styles.fileViewers}>Viewers: {file.viewers.toString()}</span>
+                            </div>
+                            <div className={styles.actions}>
+                                <button className={styles.deleteBtn} type="button" onClick={() => { deleteFile(file) }}>delete</button>
                                 <button type="button" onClick={() => {
                                     setCurrentFile(file);
                                     setShareViewEnable(!!file)
@@ -67,7 +71,7 @@ const FilesList = (
                     </form>
                 </aside>
             )}
-        </>
+        </section>
     );
 };
 

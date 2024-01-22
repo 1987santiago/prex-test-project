@@ -5,6 +5,7 @@ import UploadFile from '@/app/components/upload-file';
 import { useState, useEffect } from 'react';
 import { FileProps } from '@/types';
 import { USER, ROUTES } from '@/constants';
+import styles from './page.module.css';
 
 export default function Files() {
     const [files, setFiles] = useState([]);
@@ -64,9 +65,9 @@ export default function Files() {
     }
 
     return (
-        <>
+        <main className={styles.main}>
             <UploadFile uploadFile={uploadFile} />
             <FilesList files={files} getFiles={getFiles} deleteFile={deleteFile} shareFile={shareFile} />
-        </>
+        </main>
     )
 }
