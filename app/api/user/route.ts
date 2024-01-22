@@ -1,4 +1,5 @@
 import fsPromises from 'fs/promises';
+import fs from 'fs';
 import path from 'path';
 import { toJSON } from '@/app/utilities/adapters';
 
@@ -12,6 +13,10 @@ export async function POST(request: Request) {
         email,
         name: name || email,
     });
+
+    if (!fs.existsSync(mockedUserPath)) {
+        fs.appendFileSync(mockedUserPath, '');
+    }
 
     await fsPromises.writeFile(mockedUserPath, currentUserStr);
     return new Response(JSON.stringify({ message: 'Saved' }));

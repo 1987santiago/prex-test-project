@@ -4,7 +4,7 @@ import LogoutComponent from "./logout";
 import dynamic from "next/dynamic";
 import styles from "../page.module.css";
 
-const Navigate = (onLogout: Function) => (
+const Navigate = ({ onLogout }: { onLogout: Function }) => (
     <nav className={styles.navigate}>
         <ul>
             <li><Link href="/">Home</Link></li>

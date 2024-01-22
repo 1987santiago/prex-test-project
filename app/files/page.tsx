@@ -62,6 +62,7 @@ export default function Files() {
         });
         const responseData = await response.json();
         console.log(responseData);
+        getFiles();
     }
 
     return (

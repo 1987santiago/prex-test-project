@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from '../pages/files/page.module.css';
+import styles from '../files/page.module.css';
 
 const UploadFile = ({ uploadFile }: { uploadFile: Function }) => {
     const [file, setFile] = useState();

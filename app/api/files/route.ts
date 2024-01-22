@@ -1,4 +1,5 @@
 import fsPromises from 'fs/promises';
+import fs from 'fs';
 import path from 'path';
 import { FileProps } from '@/types';
 
@@ -7,6 +8,9 @@ const mockedUserDataPath = path.join(process.cwd(), 'public/mocks/user.json');
 
 export async function GET() {
     try {
+        if (!fs.existsSync(mockedFilesDataPath)) {
+            fs.appendFileSync(mockedFilesDataPath, '[]');
+        }
         const filesData = await fsPromises.readFile(mockedFilesDataPath, 'utf-8');
         const currentUserData = await fsPromises.readFile(mockedUserDataPath, 'utf-8');
         const filesList = JSON.parse(filesData);

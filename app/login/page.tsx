@@ -41,7 +41,7 @@ const Login = () => {
     };
 
     const persistUserData = async (user: UserDataProps) => {
-        await fetch('/api/user', {
+        await fetch(ROUTES.API.USER, {
             method: 'POST',
             body: JSON.stringify(user)
         });

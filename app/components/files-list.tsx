@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { FileProps } from '@/types';
-import styles from '../pages/files/page.module.css';
+import styles from '../files/page.module.css';
 
 const FilesList = (
     {
@@ -46,7 +46,7 @@ const FilesList = (
                             <div className={styles.fileInfo}>
                                 <span className={styles.fileName}>Name: {file.name}</span>
                                 <span className={styles.fileAuthor}>Author: {file.author}</span>
-                                <span className={styles.fileViewers}>Viewers: {file.viewers.toString()}</span>
+                                <span className={styles.fileViewers}>Viewers: {file.viewers?.toString()}</span>
                             </div>
                             <div className={styles.actions}>
                                 <button className={styles.deleteBtn} type="button" onClick={() => { deleteFile(file) }}>delete</button>

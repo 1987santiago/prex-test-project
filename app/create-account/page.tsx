@@ -1,7 +1,7 @@
 'use client';
 
 import CreateAccountComponent from "@/app/components/create-account";
-import { USER } from "@/constants";
+import { ROUTES, USER } from "@/constants";
 import { FormEvent } from "react"
 import styles from './page.module.css';
 
@@ -11,7 +11,7 @@ export default function CreateAccount() {
         event.preventDefault();
         const email = event.currentTarget.querySelector('input[type=email]')?.value;
         const password = event.currentTarget.querySelector('input[type=password]')?.value;
-        const response = await fetch('/api/users', {
+        const response = await fetch(ROUTES.API.USERS, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -22,9 +22,14 @@ export default function CreateAccount() {
                 password
             })
         });
+
         const responseData = await response.json();
         if (response.status === 201) {
             localStorage.setItem(USER.ACTIVE, email);
+            await fetch(ROUTES.API.USER, {
+                method: 'POST',
+                body: JSON.stringify(responseData.user)
+            });
             window.location.href = window.location.origin;
         }
     }
