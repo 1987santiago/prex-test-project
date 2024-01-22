@@ -9,6 +9,7 @@ export async function GET() {
     try {
         const usersData = await fsPromises.readFile(mockedUsersPath, 'utf-8');
         const jsonUsersData = JSON.parse(usersData);
+
         return NextResponse.json(JSON.stringify(jsonUsersData, null, 4));
     } catch (error) {
         return new Response(
