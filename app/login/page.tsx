@@ -2,11 +2,10 @@
 
 import React, { useState } from 'react'
 import LoginComponent from "@/app/components/login";
-import LogoutComponent from "@/app/components/logout";
 import { UserDataProps } from "@/types";
 import { ROUTES, USER } from "@/constants";
-import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import styles from './page.module.css';
 
 const Login = () => {
     const [user, setUser] = useState(global?.localStorage?.getItem(USER.ACTIVE));
@@ -55,7 +54,9 @@ const Login = () => {
     }
 
     return (
-        <LoginComponent onSubmit={onSubmit} />
+        <main className={styles.main}>
+            <LoginComponent onSubmit={onSubmit} />
+        </main>
     );
 };
 

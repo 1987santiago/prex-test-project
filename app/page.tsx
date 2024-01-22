@@ -18,7 +18,12 @@ const Home = () => {
   return (
     <main className={styles.mainPage}>
       <h2>Bienvenido {loggedUser}!</h2>
-      <p>Si quieres ver el listado de archivos ingresa <Link className={styles.link} href={ROUTES.PAGES.FILES}>aquí</Link></p>
+      {loggedUser && (
+        <p>Si quieres ver el listado de archivos ingresa <Link className={styles.link} href={ROUTES.PAGES.FILES}>aquí</Link></p>
+      )}
+      {!loggedUser && (
+        <p>Si quieres ver el listado de archivos has click <Link className={styles.link} href={ROUTES.PAGES.LOGIN}>aquí</Link></p>
+      )}
     </main>
   )
 }

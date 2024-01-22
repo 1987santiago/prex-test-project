@@ -8,9 +8,9 @@ const ROUTES = {
         USERS: '/api/users',
     },
     PAGES: {
-        LOGIN: '/pages/login',
-        CREATE_ACCOUNT: '/pages/create-account',
-        FILES: '/pages/files',
+        LOGIN: '/login',
+        CREATE_ACCOUNT: '/create-account',
+        FILES: '/files',
     }
 }
 

@@ -3,6 +3,7 @@
 import CreateAccountComponent from "@/app/components/create-account";
 import { USER } from "@/constants";
 import { FormEvent } from "react"
+import styles from './page.module.css';
 
 export default function CreateAccount() {
 
@@ -29,6 +30,8 @@ export default function CreateAccount() {
     }
 
     return (
-        <CreateAccountComponent onSubmit={onSubmit} />
+        <main className={styles.main}>
+            <CreateAccountComponent onSubmit={onSubmit} />
+        </main>
     );
 }
