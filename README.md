@@ -1,17 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+Levantar el server con:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. En el navegador ir a [http://localhost:3000](http://localhost:3000).
+2. Registrar un usuario (email, pass)[http://localhost:3000/create-account](http://localhost:3000/create-account).
+3. Acceder al listado de archivos [http://localhost:3000/files](http://localhost:3000/files)
+  3.a. Subir un archivo
+  3.b. Desde el listado se puede compartir, descargar, eliminar.
+4. Desloguear usuario
+5. Reingresar con el usuario creado [http://localhost:3000/login](http://localhost:3000/login)
+
+#### TODO List
+- [ ] Definir un patron para validar emails
+- [ ] Utilizar algún encriptador para las contraseñas (ej: md5)
+- [ ] Sugerir los usuarios registrados para compartir los archivos (ahora se deben ingresar a mano los mails)
+- [ ] Discriminar en distintos listados los archivos propios de los ajenos
+- [ ] Darle cariño a la UI.
+
