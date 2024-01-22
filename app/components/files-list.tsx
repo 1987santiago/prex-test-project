@@ -61,14 +61,15 @@ const FilesList = (
                 }
             </ul>
             {shareViewEnable && (
-                <aside>
+                <aside className={styles.share}>
+                    <h4>Share file - {currentFile?.name}</h4>
                     <form onSubmit={shareFileHandler}>
-                        <label htmlFor="emails">Share this file with:</label>
-                        <span>(file: {currentFile?.name})</span>
-                        <textarea id="emails" name="emails-list" placeholder='user@example.com, user2@example.com'></textarea>
-                        <span>(insert user emails separated by commas)</span>
+                        <label htmlFor="emails">Share this file with: </label>
+                        <textarea id="emails" name="emails-list" placeholder='user@example.com,user2@example.com'></textarea>
+                        <span>(insert user emails separated by commas, without spaces)</span>
                         <input type="submit" value="Share" />
                     </form>
+                    <span className={styles.x} onClick={() => setShareViewEnable(!shareViewEnable)}>x</span>
                 </aside>
             )}
         </section>
